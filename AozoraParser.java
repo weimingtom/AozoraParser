@@ -98,11 +98,11 @@ public class AozoraParser {
 		}
 	}
 	
-	public void openInputStream(InputStream istr, String breakLine) {
+	public void openInputStream(InputStream istr, String breakLine, String codePage) {
 		InputStreamReader reader = null;
 		BufferedReader rbuf = null;
 		try {
-			reader = new InputStreamReader(istr, "shift-jis");
+			reader = new InputStreamReader(istr, codePage);
 			rbuf = new BufferedReader(reader);
 			String line;
 			StringBuffer sb = new StringBuffer();
@@ -272,6 +272,10 @@ public class AozoraParser {
 			}
 		}
 		writesection();
+	}
+	
+	public String getLoadedText() {
+		return this.text;
 	}
 	
 	public String getOutputString() {
